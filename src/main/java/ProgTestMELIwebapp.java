@@ -21,29 +21,35 @@ public class ProgTestMELIwebapp extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<HTML>");
         out.println("<head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Numeros Primos Circulares</title></head>");
-        out.println("<body><p><strong>Bienvenido! Este programa calcula si un numero ingresado es o no primo circular.</strong></p>");    
-        out.println("<BR><BR>");
-        out.println("<form>\n" + "Por favor ingrese un numero:<br>\n" + "<input type=\"text\" name=\"numero\" id=\"numero\" autofocus>\n" + "<br>\n" + "<input type=\"submit\" value=\"Calcular\" /></form>");
-        out.println("<BR><BR>");
-        out.println("<BR><BR>");        
+		out.println("<body ><form style='height:450px;width:800px;position:absolute;left:40%;top:50%;margin:-200px 0 0 -300px'>");
+		out.println("<fieldset style='background:#eff3f6;border-top:1px solid #ADFF2F;border-bottom:1px solid #ADFF2F;padding:10px 20px'>");
+		out.println("<label><strong>Bienvenido! Este programa calcula si un numero ingresado es o no primo circular.</strong></label><BR><BR><BR><BR>");    
+        out.println("<label><strong>Por favor ingrese un numero:</strong></label><input type='text' name='numero' id='numero' tabindex='1' placeholder='Ingrese un numero aqui' autofocus>");
+		out.println("<footer><BR><BR><input type='submit' value='Calcular' tabindex='2' style='-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:15px;background:#a1d8f0;");
+		out.println("background:-moz-linear-gradient(top, #badff3, #7acbed);background:-webkit-gradient(linear, left top, left bottom, from(#badff3), to(#7acbed));");
+		out.println("-ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorStr='#badff3', EndColorStr='#7acbed')';border:1px solid #7db0cc !important; cursor: pointer;");
+		out.println("padding:11px 16px;font:bold 11px/14px Verdana, Tahomma, Geneva;text-shadow:rgba(0,0,0,0.2) 0 1px 0px;color:#fff;");
+		out.println("-moz-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;-webkit-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;");
+		out.println("box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;margin-left:0px;float:left;padding:7px 21px;'></footer>");
+        out.println("<BR><BR>");               
 		String numero = req.getParameter("numero");   
 		if(numero==null)
-			{out.println("Ingrese un numero para validar si el mismo es primo circular!");}
+			{out.println("<label style='color:red;text-align:center'><strong>Ingrese un numero para validar si el mismo es primo circular!</strong></label>");}
 		else			
 			{
 			if (isNumeric(numero)) 
 				{
 					int num = Integer.parseInt(numero);					
 					if (isCircularPrime(num))
-						{out.println("El Numero " + Integer.toString(num) + " Es Primo Circular");}
+						{out.println("<label style='color:green;text-align:center'><strong>El Numero " + Integer.toString(num) + " Es Primo Circular</strong></label>");}
 					else
-						{out.println("El Numero " + Integer.toString(num) + " No Es Primo Circular");}	              
+						{out.println("<label style='color:blue;text-align:center'><strong>El Numero " + Integer.toString(num) + " No Es Primo Circular</strong></label>");}	              
 				}  				
 			else
-				{out.println("Ingreso no valido, por favor ingrese un numero entero!");}			
+				{out.println("<label style='color:red;text-align:center'><strong>Ingreso no valido, por favor ingrese un numero entero!</strong></label>");}			
 			}        
         out.println("<BR><BR>");
-        out.println("</BODY></HTML>"); 
+        out.println("</form></fieldset><footer id='main'><a href='https://github.com/jpmal95/forherokujpmprogtestmeliwebapp.git'>Codigo disponible en Github</a></footer></BODY></HTML>"); 
   }
   
      /* Funcion para validar si un numero es primo circular */
